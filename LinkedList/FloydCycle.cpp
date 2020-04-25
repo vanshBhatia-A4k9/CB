@@ -11,15 +11,24 @@ public:
     node(int value):data(value),next(NULL){}
 };
 
-void insertHead(node* &head, int data){
+void insertAtTail(node* &head, int data){
+    if(!head){
+        node* newNode = new node(data);
+        head = newNode;
+    }
+    else{
+    node* temp = head;
+    while(temp->next != NULL){
+        temp = temp->next;
+    }
     node* newNode = new node(data);
-    newNode->next = head;
-    head = newNode;
+    temp->next = newNode;
+    }
 }
 
 void print(node* head){
     while(head!=NULL){
-        cout << head->data<<" -> ";
+        cout << head->data<<" ";
         head = head->next;
     }
 }
@@ -27,7 +36,7 @@ void print(node* head){
 void build(node* &head){
     int data ;   cin >> data ;
     while( data!= -1 ){
-        insertHead(head, data) ;
+        insertAtTail(head, data) ;
         cin >> data ;
     }
 }
@@ -56,7 +65,7 @@ bool Floydcycle(node* head){
     return false ;
 }
 
-int breakCycle(node* head){
+int breakCycle(node* &head){
     if( !(head) || !( Floydcycle(head) ) )
         return -1;
     else{
@@ -92,7 +101,8 @@ int32_t main(void){
 
     node* head = NULL;
     cin>>head;
-    cout<<Floydcycle(head);
+    cout<<Floydcycle(head)<<endl;
+    cout<<head;
 
     return 0;
 }

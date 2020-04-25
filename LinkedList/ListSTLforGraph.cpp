@@ -1,5 +1,5 @@
-#include<iostream>
-#include<list>
+#include <iostream>
+#include <list>
 using namespace std;
 
 template <typename T>
@@ -39,6 +39,5 @@ int32_t main(void){
         }
         cout<<"\n";
     }
-
     return 0;
 }
